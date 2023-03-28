@@ -48,7 +48,7 @@ This is the (almost) definitive guide to surviving the coding challenges. This i
         // add event listener to the correct section to carry out an event
             > these take the consts and add event listeners to them. In this section, you may also see "fetch," ".then," ".catch," etc
             ex:
-            newRamenForm.addEventListener("create", (event) => {
+            newShowForm.addEventListener("create", (event) => {
             event.preventDefault();
             const name = event.target.elements.name.value;
             const restaurant = event.target.elements.restaurant.value;
@@ -56,24 +56,24 @@ This is the (almost) definitive guide to surviving the coding challenges. This i
             const rating = event.target.elements.rating.value;
             const comment = event.target.elements.comment.value;
 
-            const ramen = { name, restaurant, image, rating, comment };
-            fetch("http://localhost:3000/ramens", {
+            const show = { name, restaurant, image, rating, comment };
+            fetch("http://localhost:3000/shows", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
                 },
-                body: JSON.stringify(ramen),
+                body: JSON.stringify(show),
             })
                 .then(response => response.json())
-                .then((ramen) => {
-                // add the new ramen to the menu
+                .then((show) => {
+                // add the new show to the menu
                 const img = document.createElement("img");
-                img.src = ramen.image;
-                img.alt = ramen.name;
-                img.dataset.id = ramen.id;
-                ramenMenu.append(img);
+                img.src = show.image;
+                img.alt = show.name;
+                img.dataset.id = show.id;
+                showMenu.append(img);
                 // reset the form
-                newRamenForm.reset();
+                newshowForm.reset();
                 })
                 .catch(error => console.error(error));
             });
@@ -82,15 +82,15 @@ This is the (almost) definitive guide to surviving the coding challenges. This i
         // get all the objects and display the requested object
             >this is more fetch stuff
             ex:
-            fetch("http://localhost:3000/ramens")
+            fetch("http://localhost:3000/shows")
             .then(response => response.json())
-            .then((ramens) => {
-                for (const ramen of ramens) {
+            .then((shows) => {
+                for (const show of shows) {
                 const img = document.createElement("img");
-                img.src = ramen.image;
-                img.alt = ramen.name;
-                img.dataset.id = ramen.id;
-                ramenMenu.append(img);
+                img.src = show.image;
+                img.alt = show.name;
+                img.dataset.id = show.id;
+                showMenu.append(img);
                 }
             })
             .catch(error => console.error(error));
