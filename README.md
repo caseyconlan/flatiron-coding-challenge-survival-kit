@@ -36,12 +36,12 @@ This is the (almost) definitive guide to surviving the coding challenges. This i
             function displayShowDetails(show) {
             const detailImage = showDetail.querySelector(".detail-image");
             const name = showDetail.querySelector(".name");
-            const restaurant = showDetail.querySelector(".channel");
+            const channel = showDetail.querySelector(".channel");
 
             detailImage.src = show.image;
             detailImage.alt = show.name;
             name.textContent = show.name;
-            restaurant.textContent = show.channel;
+            channel.textContent = show.channel;
             ratingDisplay.textContent = show.rating;
             commentDisplay.textContent = show.comment;}
 
@@ -51,12 +51,12 @@ This is the (almost) definitive guide to surviving the coding challenges. This i
             newShowForm.addEventListener("create", (event) => {
             event.preventDefault();
             const name = event.target.elements.name.value;
-            const restaurant = event.target.elements.restaurant.value;
+            const channel = event.target.elements.channel.value;
             const image = event.target.elements.image.value;
             const rating = event.target.elements.rating.value;
             const comment = event.target.elements.comment.value;
 
-            const show = { name, restaurant, image, rating, comment };
+            const show = { name, channel, image, rating, comment };
             fetch("http://localhost:3000/shows", {
                 method: "POST",
                 headers: {
